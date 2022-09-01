@@ -43,7 +43,8 @@ $posts = [
     ]
 ];
 
-Route::resource('/posts', PostsController::class)->only('index', 'show');
+Route::resource('/posts', PostsController::class)
+    ->only('index', 'show', 'store', 'create');
 
 // Route::get('/posts', function () use ($posts) {
 //     return view('posts.index', [
@@ -70,10 +71,10 @@ Route::get('/fun/responses', function () use ($posts) {
         ->header('Content-Type', 'application/json')->cookie('MY_COOKIE', 'Piotr Jura', 3600);
 });
 
-Route::get('/fun/redirect', function(){
+Route::get('/fun/redirect', function () {
     return redirect('/contact');
 });
 
-Route::get('/fun/back', function(){
+Route::get('/fun/back', function () {
     return back();
 });
